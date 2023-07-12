@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { loginAction, registerAction } from '../redux/actions/auth'
 
 const Auth = () => {
   const [signUp, setSignUp] = useState(true)
@@ -7,6 +8,16 @@ const Auth = () => {
   const onChangeFunc = (e) => {
       setAuthData({...authData, [e.target.name]: e.target.value})
   }
+
+  const authFunc = () => {
+    if(signUp){
+      registerAction(authData)
+    }
+    else{
+      loginAction(authData)
+    }
+  }
+
   console.log("authData", authData)
   //setSignUp state onClick eventleri için kullanıldı. signUp ise static olanlar için
   return (
@@ -23,7 +34,7 @@ const Auth = () => {
                 signUp ? <span onClick={()=>setSignUp(false)}>Daha önce giriş yaptınız mı?</span> : <span onClick={()=>setSignUp(true)}>Kayıt olmak için tıklayınız.</span>
               }
             </div>
-            <div className='cursor-pointer hover:bg-indigo-800 w-full p-2 text-center bg-indigo-600 text-white rounded-md'>
+            <div onClick={authFunc} className='cursor-pointer hover:bg-indigo-800 w-full p-2 text-center bg-indigo-600 text-white rounded-md'>
                 {signUp ? "Kayıt Ol" : "Giriş Yap"}
             </div>
 
