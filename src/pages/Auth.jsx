@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { loginAction, registerAction } from '../redux/actions/auth'
+import {useDispatch} from 'react-redux'
 
 const Auth = () => {
   const [signUp, setSignUp] = useState(true)
   const [authData, setAuthData] = useState({username: "", email: "", password: ""})
+  const dispatch = useDispatch()
 
   const onChangeFunc = (e) => {
       setAuthData({...authData, [e.target.name]: e.target.value})
@@ -11,10 +13,10 @@ const Auth = () => {
 
   const authFunc = () => {
     if(signUp){
-      registerAction(authData)
+      dispatch(registerAction(authData))
     }
     else{
-      loginAction(authData)
+      dispatch(loginAction(authData))
     }
   }
 
