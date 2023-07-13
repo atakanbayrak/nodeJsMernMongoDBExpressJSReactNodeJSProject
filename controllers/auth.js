@@ -6,9 +6,9 @@ const bcrypt = require('bcryptjs')
 const register = async(req,res) => {
     try {
         const {username, password,email} = req.body
-
-        const user = await AuthSchema.findOne(email)
-
+        const filter = {email:email}
+        const user = await AuthSchema.findOne(filter)
+        console.log(user)
         if(user){
             return res.status(500).json({msg:"Böyle bir kullanıcı zaten var"})
         }
@@ -42,8 +42,8 @@ const register = async(req,res) => {
 const login = async(req,res) => {
     try {
         const {email,password} = req.body
-
-        const user = await AuthSchema.findOne(email)
+        const filter = {search:email}
+        const user = await AuthSchema.findOne(filter)
 
         if(!user){
             return res.status(500).json({msg:"Böyle bir kullanıcı yok"})
