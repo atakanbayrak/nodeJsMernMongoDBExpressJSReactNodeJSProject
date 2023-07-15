@@ -23,7 +23,7 @@ const Auth = () => {
   console.log("authData", authData)
   //setSignUp state onClick eventleri için kullanıldı. signUp ise static olanlar için
   return (
-    <div className='w-full h-screen bg-gray-100 flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 z-50'>
+    <div className='w-full h-screen bg-gray-100 flex items-center justify-center'>
         <div className='w-1/3 bg-white p-3'>
             <h1 className='text-2xl text-indigo-600 font-bold mb-2'>{signUp ? "Register" : "Login"}</h1>
             <div className='flex flex-col space-y-3 mb-5'>
