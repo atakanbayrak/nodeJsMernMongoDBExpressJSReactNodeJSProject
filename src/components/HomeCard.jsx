@@ -18,7 +18,12 @@ const HomeCard = ({post}) => {
     }
 
     const updatePost = (id) => {
+      dispatch({type:'Modal', payload:{open:true, updateId: id}})
       //const dispatch = useDispatch(updatePostAction(id))
+      toast("Güncelleme işlemi başarılı", {
+        position:"top-right",
+        autoClose:5000,
+      })
     }
     return(
       <div className='relative w-1/4 border p-3 rounded-md bg-gray-50'>
