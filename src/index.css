@@ -7,5 +7,11 @@
     .input-style{
         @apply border p-2 rounded-md outline-none
     }
+    
+}
+@layer components {
 
+    .logo-style{
+        @apply bg-red-400 rounded-full text-white p-1 cursor-pointer
+    }
 }
